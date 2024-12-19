@@ -1,0 +1,28 @@
+CREATE TABLE IF NOT EXISTS "account" (
+	"id" serial NOT NULL UNIQUE,
+	"balance" double precision NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"surname" varchar(255) NOT NULL,
+	"number_account" varchar(255) NOT NULL,
+	PRIMARY KEY ("id")
+);
+
+CREATE TABLE IF NOT EXISTS "transaction" (
+	"id" serial NOT NULL UNIQUE,
+	"account_id" bigint NOT NULL,
+	"number_account" varchar(255) NOT NULL,
+	"amount" double precision NOT NULL,
+	PRIMARY KEY ("id")
+);
+
+CREATE TABLE IF NOT EXISTS "offenses" (
+	"id" serial NOT NULL UNIQUE,
+	"driver_name" varchar(255) NOT NULL,
+	"driver_surname" varchar(255) NOT NULL,
+	"paid" boolean NOT NULL,
+	"sum" double precision NOT NULL,
+	PRIMARY KEY ("id")
+);
+
+
+ALTER TABLE "transaction" ADD CONSTRAINT "transaction_fk1" FOREIGN KEY ("account_id") REFERENCES "account"("id");

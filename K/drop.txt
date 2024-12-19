@@ -1,0 +1,6 @@
+
+ALTER TABLE "transaction" DROP CONSTRAINT IF EXISTS "transaction_fk0";
+
+DROP TABLE IF EXISTS "account" CASCADE;
+DROP TABLE IF EXISTS "transaction" CASCADE;
+DROP TABLE IF EXISTS "offenses" CASCADE;
